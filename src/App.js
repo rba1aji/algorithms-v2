@@ -18,12 +18,12 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { useState, useContext } from 'react';
 function Layout() {
-  const [inputType, setInputType] = useState("");
-  const context=useContext();
+  const [inputType, setInputType] = useState('');
+  // const context=useContext();
   return (
     <>
       <SelectAlgorithm />
-      <InputArea />
+      <InputArea inputType="" />
       <Outlet />
     </>
   );
@@ -60,8 +60,10 @@ function SelectAlgorithm() {
   );
 }
 
-function InputArea() {
-  return <textarea rows={7} cols={28} />;
+function InputArea(props) {
+  return (
+    <textarea rows={7} cols={28} placeholder={`Enter the ${props.inputType}`} />
+  );
 }
 
 export default function App() {
