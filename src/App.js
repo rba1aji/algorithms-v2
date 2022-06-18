@@ -18,7 +18,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { useState, useContext } from 'react';
 function Layout() {
-  const [inputType, setInputType] = useState('');
+  const [inputType, setInputType] = useState("");
+  const context=useContext();
   return (
     <>
       <SelectAlgorithm />
