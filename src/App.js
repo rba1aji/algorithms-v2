@@ -16,10 +16,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
+const context= React.createContext();
 import { useState, useContext } from 'react';
 function Layout() {
   const [inputType, setInputType] = useState('');
-  // const context=useContext();
   return (
     <>
       <SelectAlgorithm />
