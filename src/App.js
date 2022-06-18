@@ -16,9 +16,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import  {useState,useContext} from 'react'
-function Layout(){
-  const [inputType,setInputType]=useState("");
+import { useState, useContext } from 'react';
+function Layout() {
+  const [inputType, setInputType] = useState('');
   return (
     <>
       <SelectAlgorithm />
@@ -26,7 +26,7 @@ function Layout(){
       <Outlet />
     </>
   );
-};
+}
 
 function SelectAlgorithm() {
   const navigate = useNavigate();
@@ -44,9 +44,15 @@ function SelectAlgorithm() {
           onChange={handleChange}
         >
           {/* <MenuItem value="/index">select</MenuItem> */}
-          <MenuItem value="/knapsack">Knapsack </MenuItem>
-          <MenuItem value="/floyds">Floyds </MenuItem>
-          <MenuItem value="/warshalls">warshalls </MenuItem>
+          <MenuItem value="/knapsack" exact>
+            Knapsack{' '}
+          </MenuItem>
+          <MenuItem value="/floyds" exact>
+            Floyds{' '}
+          </MenuItem>
+          <MenuItem value="/warshalls" exact>
+            warshalls{' '}
+          </MenuItem>
         </Select>
       </FormControl>
     </Box>
