@@ -1,7 +1,5 @@
-import React from 'react'
-function InputArea(){
-  return(
-    <h3>ENTER INPUT</h3>
-  );
+import React from 'react';
+function InputArea() {
+  return <textarea rows={7} cols={28} placeholder={`Enter the `} />;
 }
 export default InputArea;

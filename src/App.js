@@ -63,9 +63,9 @@ function SelectAlgorithm() {
           </Select>
         </FormControl>
       </Box>
-      <context.Provider value={alg}>
+      {/* <context.Provider value={alg}>
         <InputArea />
-      </context.Provider>
+      </context.Provider> */}
     </>
   );
 }

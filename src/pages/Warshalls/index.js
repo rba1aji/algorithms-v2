@@ -1,9 +1,9 @@
 import React from 'react';
-import InputArea from './components/InputArea';
+import InputArea from '../../components/InputArea';
 export default function warshalls() {
   return (
     <>
-      <h2>Warshall's algorithm</h2>
+      <h1>Warshall's algorithm</h1>
       <InputArea />
     </>
   );
