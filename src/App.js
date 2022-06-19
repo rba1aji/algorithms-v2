@@ -6,10 +6,9 @@ import {
   Outlet,
   useNavigate,
 } from 'react-router-dom';
-import Knapsack from './components/Knapsack';
-import Floyds from './components/Floyds';
-import Warshalls from './components/Warshalls';
-// import Knapsack from './pages/Knapsack';
+import Knapsack from './pages/Knapsack';
+import Floyds from './pages/Floyds';
+import Warshalls from './pages/Warshalls';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -18,7 +17,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ReactDOM from 'react-dom/clients';
 import { useState, createContext } from 'react';
 
-const context = createContext();
+const context = createContext('');
 
 function Layout() {
   const [inputType, setInputType] = useState('');
@@ -33,9 +32,10 @@ function Layout() {
 
 function SelectAlgorithm() {
   const navigate = useNavigate();
-  const [alg, setAlg] = useState('');
+  const [alg, setAlg] = useState('input');
   const handleChange = (event) => {
     setAlg(event.target.value);
+    <InputArea />;
     navigate(event.target.value);
   };
   return (
@@ -72,8 +72,14 @@ function SelectAlgorithm() {
 
 import { useContext } from 'react';
 function InputArea() {
-  const itype = useContext(context);
-  return <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />;
+  // const itype = useContext(context);
+  return (
+    <textarea
+      rows={7}
+      cols={28}
+      placeholder={`Enter the ${useContext(context)}`}
+    />
+  );
 }
 
 export default function App() {
