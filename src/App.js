@@ -23,7 +23,7 @@ function Layout() {
   return (
     <>
       <SelectAlgorithm />
-      <InputArea inputType="" />
+      <InputArea />
       <Outlet />
     </>
   );
@@ -34,6 +34,8 @@ function SelectAlgorithm() {
   const handleChange = (event) => {
     const val = event.target.value;
     navigate(val);
+    <context.Provider value={val}>
+      </context.Provider>
   };
   return (
     <Box>
@@ -61,8 +63,9 @@ function SelectAlgorithm() {
 }
 
 function InputArea(props) {
+  const itype=context;
   return (
-    <textarea rows={7} cols={28} placeholder={`Enter the ${props.inputType}`} />
+    <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />
   );
 }
 
