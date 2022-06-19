@@ -64,13 +64,13 @@ function SelectAlgorithm() {
         </FormControl>
       </Box>
       <context.Provider value={alg}>
-        <InputArea inputType={alg} />
+        <InputArea />
       </context.Provider>
     </>
   );
 }
 
-import {useContext} from 'react'
+import { useContext } from 'react';
 function InputArea() {
   const itype = useContext(context);
   return <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />;
