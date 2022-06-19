@@ -15,9 +15,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import ReactDOM from 'react-dom/clients';
+import { useState, createContext } from 'react';
 
-const context= React.createContext();
-import { useState, useContext } from 'react';
+const context = createContext();
+
 function Layout() {
   const [inputType, setInputType] = useState('');
   return (
@@ -34,8 +36,7 @@ function SelectAlgorithm() {
   const handleChange = (event) => {
     const val = event.target.value;
     navigate(val);
-    <context.Provider value={val}>
-      </context.Provider>
+    <context.Provider value={val}></context.Provider>;
   };
   return (
     <Box>
@@ -63,10 +64,8 @@ function SelectAlgorithm() {
 }
 
 function InputArea(props) {
-  const itype=context;
-  return (
-    <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />
-  );
+  const itype = context;
+  return <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />;
 }
 
 export default function App() {
