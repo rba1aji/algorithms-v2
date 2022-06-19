@@ -25,7 +25,7 @@ function Layout() {
   return (
     <>
       <SelectAlgorithm />
-      <InputArea />
+      {/* <InputArea /> */}
       <Outlet />
     </>
   );
@@ -33,38 +33,46 @@ function Layout() {
 
 function SelectAlgorithm() {
   const navigate = useNavigate();
+  const [alg, setAlg] = useState('');
   const handleChange = (event) => {
-    const val = event.target.value;
-    navigate(val);
-    <context.Provider value={val}></context.Provider>;
+    setAlg(event.target.value);
+    navigate(event.target.value);
   };
   return (
-    <Box>
-      <FormControl style={{ width: 250 }}>
-        <InputLabel id="demo-simple-select-label">Select algorithm</InputLabel>
-        <Select
-          label="Select algorithm"
-          id="demo-simple-select"
-          onChange={handleChange}
-        >
-          {/* <MenuItem value="/index">select</MenuItem> */}
-          <MenuItem value="/knapsack" exact>
-            Knapsack{' '}
-          </MenuItem>
-          <MenuItem value="/floyds" exact>
-            Floyds{' '}
-          </MenuItem>
-          <MenuItem value="/warshalls" exact>
-            warshalls{' '}
-          </MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <>
+      <Box>
+        <FormControl style={{ width: 250 }}>
+          <InputLabel id="demo-simple-select-label">
+            Select algorithm
+          </InputLabel>
+          <Select
+            label="Select algorithm"
+            id="demo-simple-select"
+            onChange={handleChange}
+          >
+            {/* <MenuItem value="/index">select</MenuItem> */}
+            <MenuItem value="/knapsack" exact>
+              Knapsack{' '}
+            </MenuItem>
+            <MenuItem value="/floyds" exact>
+              Floyds{' '}
+            </MenuItem>
+            <MenuItem value="/warshalls" exact>
+              warshalls{' '}
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <context.Provider value={alg}>
+        <InputArea inputType={alg} />
+      </context.Provider>
+    </>
   );
 }
 
-function InputArea(props) {
-  const itype = context;
+import {useContext} from 'react'
+function InputArea() {
+  const itype = useContext(context);
   return <textarea rows={7} cols={28} placeholder={`Enter the ${itype}`} />;
 }
 
