@@ -7,6 +7,7 @@ export default function floyds() {
   const weightMatrix=[];
 
   function Calculate() {
+    //Order of execution
     String2WeightMatrix();
   }
 
@@ -14,11 +15,22 @@ export default function floyds() {
     setInput('0 inf 3 inf\n2 0 inf inf\ninf 7 0 1\n6 inf inf 0');
   }
 
+  function InputAlert(){
+    alert(
+      'ENTER VALID WEIGHT MATRIX\ntip:\nmake sure you put inf for infinity\nweight matrix must be square matrix'
+    );
+  }
+
   function String2WeightMatrix() {
     //input string to 1D str array
     const wm1D = input.replaceAll('\n', ' ').replaceAll(/ +/g, ' ').split(' ');
     if (wm1D[0] == '') wm1D.shift();
     if (wm1D[wm1D.length - 1] == '') wm1D.pop();
+
+    //check if input is nothing
+    if(wm1D.length==0){
+      InputAlert()
+    }
 
     //1D array to 2D int array matrix
     const n = Math.sqrt(wm1D.length);
@@ -31,9 +43,7 @@ export default function floyds() {
         } else {
           let temp = parseInt(wm1D[k], 10);
           if (Number.isNaN(temp)) {
-            alert(
-              'ENTER VALID WEIGHT MATRIX\ntip:\nmake sure you put inf for infinity\nweight matrix must be square matrix'
-            );
+            InputAlert();
             return;
           } else tempArr.push(temp);
         }
@@ -45,8 +55,9 @@ export default function floyds() {
 
   return (
     <>
+      {/* Title */}
       <h1>Floyd's algorithm</h1>
-
+      {/* Input box */}
       <label>Enter a WEIGHT MATRIX</label>
       <textarea
         rows={8}
@@ -56,7 +67,7 @@ export default function floyds() {
           setInput(event.target.value);
         }}
       />
-
+      {/* Buttons */}
       <br />
       <button onClick={DemoInput}>Demo input</button>
       <button onClick={Calculate}>Find solution</button>
