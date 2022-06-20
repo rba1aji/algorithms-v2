@@ -7,12 +7,8 @@ export default function floyds() {
   const [output, setOutput] = useState([[]]);
 
   function Calculate() {
-    // alert(weightMatrix);
-    // useEffect(()=>{
-      correctInput();
+      // correctInput();
       String2WeightMatrix();
-    // })
-    
   }
 
   function DemoInput() {
@@ -30,7 +26,7 @@ export default function floyds() {
       .replaceAll(/ +/g, ' ')
       .split(' ');
     //last character need to remove ws
-
+    if(weightMatrix1D[0]==' ')weightMatrix1D.shift();
     let n = Math.sqrt(weightMatrix1D.length);
     let weightMatrix = [];
     let k = 0;
