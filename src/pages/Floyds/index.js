@@ -18,15 +18,18 @@ export default function floyds() {
 
 
   function String2WeightMatrix() {
+    
+    //input string to 1D str array
     const wm1D = input
       .replaceAll('\n', ' ')
       .replaceAll(/ +/g, ' ')
       .split(' ');
     if(wm1D[0]=="")wm1D.shift();
     if(wm1D[wm1D.length-1]=="")wm1D.pop();
-    
+
+    //1D array to 2D int array matrix
     const n = Math.sqrt(wm1D.length);
-    let weightMatrix = [];
+    const wm = []; //weight matrix
     let k = 0;
     for (let i = 0; i < n; i++) {
       let tempArr = [];
@@ -43,9 +46,9 @@ export default function floyds() {
         }
         k++;
       }
-      weightMatrix.push(tempArr);
+      wm.push(tempArr);
     }
-    return weightMatrix;
+    return wm;
   }
 
 
