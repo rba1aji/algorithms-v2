@@ -25,7 +25,7 @@ export default function floyds() {
     if(wm1D[0]=="")wm1D.shift();
     if(wm1D[wm1D.length-1]=="")wm1D.pop();
     
-    let n = Math.sqrt(wm1D.length);
+    const n = Math.sqrt(wm1D.length);
     let weightMatrix = [];
     let k = 0;
     for (let i = 0; i < n; i++) {
@@ -33,7 +33,7 @@ export default function floyds() {
       for (let j = 0; j < n; j++) {
         if (wm1D[k] == 'inf') tempArr.push(Number.MAX_VALUE);
         else {
-          let temp = parseInt(wm1D[k]);
+          let temp = parseInt(wm1D[k],10);
           if (Number.isNaN(temp)) {
             alert(
               'ENTER VALID WEIGHT MATRIX\ntip:\nmake sure you put inf for infinity\nweight matrix must be square matrix\ntry removing white spaces after last element'
