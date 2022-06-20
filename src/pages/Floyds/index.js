@@ -15,9 +15,9 @@ export default function floyds() {
     setInput('0 inf 3 inf\n2 0 inf inf\ninf 7 0 1\n6 inf inf 0');
   }
 
-  function InputAlert(){
+  function WrongInputAlert(){
     alert(
-      'ENTER VALID WEIGHT MATRIX\ntip:\nmake sure you put inf for infinity\nweight matrix must be square matrix'
+      'ENTER VALID WEIGHT MATRIX\n\tmake sure you put inf for infinity\n\tweight matrix must be square matrix'
     );
   }
 
@@ -29,7 +29,7 @@ export default function floyds() {
 
     //check if input is nothing
     if(wm1D.length==0){
-      InputAlert()
+      WrongInputAlert()
     }
 
     //1D array to 2D int array matrix
@@ -43,7 +43,7 @@ export default function floyds() {
         } else {
           let temp = parseInt(wm1D[k], 10);
           if (Number.isNaN(temp)) {
-            InputAlert();
+            WrongInputAlert();
             return;
           } else tempArr.push(temp);
         }
