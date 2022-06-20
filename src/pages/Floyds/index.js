@@ -7,7 +7,7 @@ export default function floyds() {
   const [output, setOutput] = useState([[]]);
 
   function Calculate() {
-      // correctInput();
+      // CorrectInput();
       String2WeightMatrix();
   }
 
@@ -17,25 +17,23 @@ export default function floyds() {
   }
 
 
-  function correctInput() {
-    if (input[0] == '\n') setInput(input.replace('\n', ''));
-  }
   function String2WeightMatrix() {
-    const weightMatrix1D = input
+    const wm1D = input
       .replaceAll('\n', ' ')
       .replaceAll(/ +/g, ' ')
       .split(' ');
-    //last character need to remove ws
-    if(weightMatrix1D[0]==' ')weightMatrix1D.shift();
-    let n = Math.sqrt(weightMatrix1D.length);
+    if(wm1D[0]=="")wm1D.shift();
+    if(wm1D[wm1D.length-1]=="")wm1D.pop();
+    
+    let n = Math.sqrt(wm1D.length);
     let weightMatrix = [];
     let k = 0;
     for (let i = 0; i < n; i++) {
       let tempArr = [];
       for (let j = 0; j < n; j++) {
-        if (weightMatrix1D[k] == 'inf') tempArr.push(Number.MAX_VALUE);
+        if (wm1D[k] == 'inf') tempArr.push(Number.MAX_VALUE);
         else {
-          let temp = parseInt(weightMatrix1D[k]);
+          let temp = parseInt(wm1D[k]);
           if (Number.isNaN(temp)) {
             alert(
               'ENTER VALID WEIGHT MATRIX\ntip:\nmake sure you put inf for infinity\nweight matrix must be square matrix\ntry removing white spaces after last element'
