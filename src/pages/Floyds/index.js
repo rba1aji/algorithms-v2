@@ -6,12 +6,14 @@ export default function floyds() {
   const [output, setOutput] = useState([[]]);
 
   function Calculate() {
-    const weightMatrix = String2WeightMatrix();
+    correctInput();
+    // const weightMatrix = String2WeightMatrix();
 
     // alert(weightMatrix);
-    function String2WeightMatrix() {
+    function correctInput() {
       if (input[0] == '\n') setInput(input.replace('\n', ''));
-
+    }
+    function String2WeightMatrix() {
       const weightMatrix1D = input
         .replaceAll('\n', ' ')
         .replaceAll(/ +/g, ' ')
@@ -62,7 +64,7 @@ export default function floyds() {
       />
       <br />
 
-      <button onClick={Demo}>Demo</button>
+      <button onClick={Demo}>Demo input</button>
       <button onClick={Calculate}>Find solution</button>
     </>
   );
