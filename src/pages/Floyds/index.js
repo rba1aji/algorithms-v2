@@ -65,8 +65,15 @@ export default function floyds() {
       }
       intermediates.push(tempArr);
     }
+    //digraphs
     let ta = weightMatrix;
-    setOutput(ta);
+    setOutput(
+      ta.toString()
+      // (old)=>{
+      //   return [...old,ta.toString()]
+      // }
+    )
+    // alert(ta.toString())
     for (let a = 0; a < intermediates.length; a++) {
       for (let b = 0; b < intermediates[a].length; b++) {
         let imt = intermediates[a][b];
@@ -83,7 +90,12 @@ export default function floyds() {
           }
         }
       }
-      digraphs += 'D(' + (a + 1) + ')\n' + printMatrix(ta) + '\n';
+      setOutput(
+        (old)=>{
+          return [...old,ta.toString()];
+        }
+      )
+      alert(output);
     }
   }
 
