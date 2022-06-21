@@ -4,8 +4,8 @@ import { useState, createContext, useContext, useEffect } from 'react';
 export default function floyds() {
   const [input, setInput] = useState('');
   const weightMatrix = [];
-  const outputArr=[];
-  const [output,setOutput]=useState();
+  const outputArr = [];
+  const [output, setOutput] = useState([]);
 
   function Calculate() {
     //Order of execution
@@ -56,8 +56,18 @@ export default function floyds() {
     }
   }
 
+  function Arr2TabStr(a) {
+    let s = `<table>`;
+    a.forEach((i) => {
+      s += `<tr>`;
+      i.forEach((j) => [(s += `<td>${j}</td`)]);
+      s += `</tr>`;
+    });
+    return s;
+  }
+
   function Solve() {
-    const n=weightMatrix.length;
+    const n = weightMatrix.length;
     //Intermediates
     const intermediates = [];
     for (let i = 0; i < n; i++) {
@@ -69,7 +79,10 @@ export default function floyds() {
     }
     //digraphs
     let ta = weightMatrix;
-    outputArr.push(ta)
+    // outputArr.push(ta);
+    setOutput((old)=>{
+      return[...old,Arr2TabStr(ta)]
+    })
     for (let a = 0; a < intermediates.length; a++) {
       for (let b = 0; b < intermediates[a].length; b++) {
         let imt = intermediates[a][b];
@@ -86,18 +99,41 @@ export default function floyds() {
           }
         }
       }
-      outputArr.push(ta)
+      // outputArr.push(Arr2TabStr(ta));
+      setOutput((old)=>{
+        return [...old,Arr2TabStr(ta)];
+      }) 
+      console.log(output);
     }
   }
 
-  function ShowOutput(){
-    for(let i=0;i<outputArr.length;i++){
-      for(let j=0;j<outputArr[i].length;j++){
-        for(let k=0;k<outputArr[i][j].length;k++){
+  function ShowOutput() {
+    // setOutput(outputArr);
+    // console.log(outputArr)
+    // console.log(output)
+    // for(let i=0;i<outputArr.length;i++){
+    //   for(let j=0;j<outputArr[i].length;j++){
+    //     // for(let k=0;k<outputArr[i][j].length;k++){
+    //       setOutput(
+    //         (old)=>{
+    //           return [...old,outputArr[j]]
+    //       })
+    //       console.log(output)
+    //     // }
+    //   }
+    // }
+  }
 
+  function OutputBox(){
+    return(
+      <textarea value={output} onChange={
+        ()=>{
+          setOutput((old)=>{
+            return [...old,output]
+          })
         }
-      }
-    }
+      }/>
+    );
   }
 
   return (
@@ -106,7 +142,7 @@ export default function floyds() {
       <h1>Floyd's algorithm</h1>
       {/* Input box */}
       <label>Enter a WEIGHT MATRIX</label>
-      <br/>
+      <br />
       <textarea
         rows={8}
         cols={25}
@@ -120,12 +156,8 @@ export default function floyds() {
       <button onClick={DemoInput}>Demo input</button>
       <button onClick={Calculate}>Find solution</button>
       <br />
-        {/* Output box */}
-        <textarea 
-          id="outputBox"
-          style={{height:0, width:0}} 
-          value={output}
-        />
+      {/* Output box */}
+      <OutputBox/>  
     </>
   );
 }
