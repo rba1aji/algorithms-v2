@@ -3,13 +3,14 @@ import { useState, createContext, useContext, useEffect } from 'react';
 
 export default function floyds() {
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState([]);
   const weightMatrix = [];
+  const outputArr=[];
 
   function Calculate() {
     //Order of execution
     String2WeightMatrix();
     Solve();
+    ShowOutput();
   }
 
   function DemoInput() {
@@ -67,12 +68,7 @@ export default function floyds() {
     }
     //digraphs
     let ta = weightMatrix;
-    setOutput(
-      (old)=>{
-        return [...old,ta]
-      }
-    )
-    // alert(ta.toString())
+    outputArr.push(ta)
     for (let a = 0; a < intermediates.length; a++) {
       for (let b = 0; b < intermediates[a].length; b++) {
         let imt = intermediates[a][b];
@@ -89,13 +85,12 @@ export default function floyds() {
           }
         }
       }
-      setOutput(
-        (old)=>{
-          return [...old,ta];
-        }
-      )
-      console.log(output);
+      outputArr.push(ta)
     }
+  }
+
+  function ShowOutput(){
+    
   }
 
   return (
@@ -104,6 +99,7 @@ export default function floyds() {
       <h1>Floyd's algorithm</h1>
       {/* Input box */}
       <label>Enter a WEIGHT MATRIX</label>
+      <br/>
       <textarea
         rows={8}
         cols={25}
@@ -115,9 +111,14 @@ export default function floyds() {
       {/* Buttons */}
       <br />
       <button onClick={DemoInput}>Demo input</button>
-      <button onClick={
-        Calculate
-        }>Find solution</button>
+      <button onClick={Calculate}>Find solution</button>
+      <br />
+        {/* Output box */}
+        <textarea 
+          id="outputBox"
+          style={{height:0, width:0}} 
+          value={}
+        />
     </>
   );
 }
