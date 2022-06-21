@@ -91,7 +91,13 @@ export default function floyds() {
   }
 
   function ShowOutput(){
-    
+    for(let i=0;i<outputArr.length;i++){
+      for(let j=0;j<outputArr[i].length;j++){
+        for(let k=0;k<outputArr[i][j].length;k++){
+
+        }
+      }
+    }
   }
 
   return (
