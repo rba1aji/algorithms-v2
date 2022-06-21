@@ -5,6 +5,7 @@ export default function floyds() {
   const [input, setInput] = useState('');
   const weightMatrix = [];
   const outputArr=[];
+  const [output,setOutput]=useState();
 
   function Calculate() {
     //Order of execution
@@ -117,7 +118,7 @@ export default function floyds() {
         <textarea 
           id="outputBox"
           style={{height:0, width:0}} 
-          value={}
+          value={output}
         />
     </>
   );
