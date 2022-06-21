@@ -68,10 +68,9 @@ export default function floyds() {
     //digraphs
     let ta = weightMatrix;
     setOutput(
-      ta.toString()
-      // (old)=>{
-      //   return [...old,ta.toString()]
-      // }
+      (old)=>{
+        return [...old,ta]
+      }
     )
     // alert(ta.toString())
     for (let a = 0; a < intermediates.length; a++) {
@@ -92,10 +91,10 @@ export default function floyds() {
       }
       setOutput(
         (old)=>{
-          return [...old,ta.toString()];
+          return [...old,ta];
         }
       )
-      alert(output);
+      console.log(output);
     }
   }
 
@@ -116,7 +115,9 @@ export default function floyds() {
       {/* Buttons */}
       <br />
       <button onClick={DemoInput}>Demo input</button>
-      <button onClick={Calculate}>Find solution</button>
+      <button onClick={
+        Calculate
+        }>Find solution</button>
     </>
   );
 }
